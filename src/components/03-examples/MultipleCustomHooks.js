@@ -4,7 +4,7 @@ import { useFetch } from '../../hooks/useFetch';
 import './effects.css'
 
 export const MultipleCustomHooks = () => {
-    const { counter, increment } = useCounter(1);
+    const { counter, increment, decrement } = useCounter(1);
     const { loading, data } = useFetch(`https://www.breakingbadapi.com/api/quotes/${counter}`);
     const { author, quote } = (!loading && data.length > 0) && data[0];
     
@@ -23,6 +23,10 @@ export const MultipleCustomHooks = () => {
                         </blockquote>
                     ) 
                 }
+                <button onClick={decrement}
+                        className='btn btn-primary'>
+                        Previous quote
+                </button>
                 <button onClick={increment}
                         className='btn btn-primary'>
                         Next quote
